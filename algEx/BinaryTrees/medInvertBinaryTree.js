@@ -30,7 +30,6 @@ function swapLeftAndRight(tree) {
     tree.right = left;
 }
 
-// This is the class of the input binary tree.
 class BinaryTree {
     constructor(value) {
         this.value = value;
