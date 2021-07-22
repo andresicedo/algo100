@@ -226,67 +226,78 @@
 // // test:
 // console.log(solution(50, givenArr)); //expected: [55, 44, 41], (the order is of the distance from closest to far) 
 
-/** Q2 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * 1. Use a constructor function to implement a Plane with a name and a speed property. 
- * The speed property is the current speed of the plane in mi/h.
- * 2. Implement an ‘accelerate’ method that will increase the plane’s speed 25 mi/h, and log the new speed to the console.
- * 3. Implement a ‘decelerate’ method that will decrease the plane’s speed 25 mi/h, and log the new speed to the console.
- * 4. Create 2 plane objects and experiment with calling ‘accelerate’ and ‘decelerate’ multiple times on each of them.
+// /** Q2 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//  * 1. Use a constructor function to implement a Plane with a name and a speed property. 
+//  * The speed property is the current speed of the plane in mi/h.
+//  * 2. Implement an ‘accelerate’ method that will increase the plane’s speed 25 mi/h, and log the new speed to the console.
+//  * 3. Implement a ‘decelerate’ method that will decrease the plane’s speed 25 mi/h, and log the new speed to the console.
+//  * 4. Create 2 plane objects and experiment with calling ‘accelerate’ and ‘decelerate’ multiple times on each of them.
+//  */
+// // complete the class: expected: 
+// class Plane {
+//     constructor(name, speed) {
+//         this.name = name;
+//         this.speed = speed;
+//     }
+//     accelerate = () => {
+//         this.speed += 25;
+//         console.log(`${this.name} going at ${this.speed} mi/h`)
+//     }
+//     decelerate = () => {
+//         this.speed -= 25;
+//         console.log(`${this.name} going at ${this.speed} mi/h`)
+//     }
+// }
+
+// // test:
+// const plane1 = new Plane('Boeing 787', 561);
+// const plane2 = new Plane('Airbus A320', 674);
+// plane1.accelerate(); // console output: Boeing 787 going at 586 mi/h
+// plane2.decelerate(); // console output: Airbus A320 going at 649 mi/h
+
+/** Q3 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * Say you have an array prices for which the ith element is the price of a given 
+ * stock on day i.
+ * Design an algorithm to find the maximum profit. 
+ * You may complete as many transactions as you like (i.e., buy one and sell one 
+ * share of the stock multiple times).
+ * Note: You may not engage in multiple transactions at the same time (i.e., you 
+ * must sell the stock before you buy again).
+ * 
+ * Example 1:
+ * Input: [7,1,5,3,6,4]
+ * Output: 7
+ * Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), 
+ *              profit = 5-1 = 4.
+                Then buy on day 4 (price = 3) and sell on day 5 (price = 6), 
+                profit = 6-3 = 3.
+ * 
+ * Example 2:
+ * Input: [1,2,3,4,5]
+ * Output: 4
+ * Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+            Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are
+            engaging multiple transactions at the same time. You must sell before buying again.
+ *
+ * Example 3:
+ * Input: [7,6,4,3,1]
+ * Output: 0
+ * Explanation: In this case, no transaction is done, i.e. max profit = 0.
  */
-// complete the class: expected: 
-class Plane {
-    constructor(name, speed) {
-        this.name = name;
-        this.speed = speed;
+// complete the solution: 
+const prices = [7, 1, 5, 3, 6, 4, 6, 5, 7, 2, 4, 7];
+function solution(prices) {
+    let profit = 0;
+    for (let i = 0; i < prices.length; i++) {
+        const currPrice = prices[i];
+        const nextDayPrice = prices[i+1];
+        if (nextDayPrice > currPrice) profit+=(nextDayPrice-currPrice);
     }
-    accelerate = () => {
-        this.speed += 25;
-        console.log(`${this.name} going at ${this.speed} mi/h`)
-    }
-    decelerate = () => {
-        this.speed -= 25;
-        console.log(`${this.name} going at ${this.speed} mi/h`)
-    }
+    return profit;
 }
 
 // test:
-const plane1 = new Plane('Boeing 787', 561);
-const plane2 = new Plane('Airbus A320', 674);
-plane1.accelerate(); // console output: Boeing 787 going at 586 mi/h
-plane2.decelerate(); // console output: Airbus A320 going at 649 mi/h
-
-//   /** Q3 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//    * Say you have an array prices for which the ith element is the price of a given stock on day i.
-//    * Design an algorithm to find the maximum profit. 
-//    * You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).
-//    * Note: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).
-//    * 
-//    * Example 1:
-//    * Input: [7,1,5,3,6,4]
-//    * Output: 7
-//    * Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
-//                   Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
-//    * 
-//    * Example 2:
-//    * Input: [1,2,3,4,5]
-//    * Output: 4
-//    * Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
-//               Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are
-//               engaging multiple transactions at the same time. You must sell before buying again.
-//    *
-//    * Example 3:
-//    * Input: [7,6,4,3,1]
-//    * Output: 0
-//    * Explanation: In this case, no transaction is done, i.e. max profit = 0.
-//    */
-//    // complete the solution: 
-//    const prices = [7,1,5,3,6,4,6,5,7,2,4,7];
-//    function solution(prices) {
-
-//    }
-
-//    // test:
-//    console.log(solution(prices)); // expected: 16
+console.log(solution(prices)); // expected: 16
 
 //    /** Q4 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //     * Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
