@@ -24,4 +24,9 @@ let getAllSubstrings = (string) => {
     return result;
 }
 
+let wordReversed = (string) => {
+    let arr = string.split("");
+    return arr.reverse().join("");
+}
+
 console.log(jumbledNums('eonenourfirz'));
