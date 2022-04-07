@@ -4,7 +4,7 @@
 
 ## About this project
 <hr>
-This repository is where I solve algorithms and data structure problems. My initial intention was to only solve 100 of the most popular coding interview problems, but it has since been a useful repository to also practice solving these problems in multiple programming languages.
+This repository is where I solve algorithms and data structure problems. My initial intention was to only solve 100 of the most popular coding interview problems, but it has since been a useful repository to practice on any problem I may come across.
 <br>
 <br>
 <br>
